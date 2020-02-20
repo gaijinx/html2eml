@@ -1,0 +1,4 @@
+*.pyc
+build
+dist
+html2eml.egg-info
