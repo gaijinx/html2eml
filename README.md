@@ -1,4 +1,6 @@
 # html2eml
+[![Build Status](https://travis-ci.com/gaijinx/html2eml.svg?branch=master)](https://travis-ci.com/gaijinx/html2eml)
+[![MIT License badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/gaijinx/html2eml/blob/master/LICENSE)
 
 `html2eml` is a simple package for converting HTML text to EML format (MIME RFC 822).
 
