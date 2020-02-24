@@ -60,7 +60,8 @@ In case of multiple recipients we can pass a list in any of those fields
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: base64
-To: =?utf-8?q?foo=40example=2Ecom=3B_spam=40example=2Ecom=3B_eggs=40example=2Ecom?=
+To: =?utf-8?q?foo=40example=2Ecom=3B_spam=40example=2Ecom=3B_eggs=40example=2Eco?=
+ =?utf-8?q?m?=
 From: =?utf-8?q?bar=40example=2Ecom?=
 
 PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
