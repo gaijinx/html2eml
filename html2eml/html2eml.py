@@ -16,7 +16,7 @@ def from_html(html_text, charset='utf-8', to=None,
     _add_recipient_header(msg, bcc, 'BCC', charset)
 
     if subject:
-        msg['Subject'] = email.header.Header(subject, charset)
+        msg['Subject'] = _prepare_header(subject, charset=charset)
 
     return msg
 
@@ -25,4 +25,8 @@ def _add_recipient_header(msg, recipients, field_name, charset):
     if recipients:
         if isinstance(recipients, (list, tuple)):
             recipients = "; ".join(recipients)
-        msg[field_name] = email.header.Header(recipients, charset)
+        msg[field_name] = _prepare_header(recipients, charset=charset)
+
+
+def _prepare_header(s, charset):
+    return email.header.Header(s, charset=charset).encode()
