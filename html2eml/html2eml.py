@@ -25,7 +25,8 @@ def _add_recipient_header(msg, recipients, field_name):
     if recipients:
         if not isinstance(recipients, (list, tuple)):
             recipients = [recipients]
-        msg[field_name] = email.header.Header(",".join(recipients))
+        msg[field_name] = email.header.Header(", ".join(recipients),
+                                              header_name=field_name).encode()
 
 
 def _prepare_header(s, charset):

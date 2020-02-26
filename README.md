@@ -60,7 +60,7 @@ In case of multiple recipients we can pass a list in any of those fields
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: base64
-To: foo@example.com,spam@example.com,eggs@example.com
+To: foo@example.com, spam@example.com, eggs@example.com
 From: bar@example.com
 
 PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4
