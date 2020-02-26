@@ -51,17 +51,18 @@ class TestFromHtml(unittest.TestCase):
         }
         msg = html2eml.from_html('', **params)
         for param, header in self.params_and_headers.items():
-            self.assertEqual(self._decode_header(msg[header])[0].decode('utf-8'), params[param])
+            self.assertEqual(str(msg[header]), params[param])
 
     def test_recipients_list(self):
+        fields_to_test = ['to', 'cc', 'bcc']
         params = {
             param: [
                 '{}{}@test.com'.format(param, i) for i in range(3)
-            ] for param in self.params_and_headers.keys()
+            ] for param in self.params_and_headers.keys() if param in fields_to_test
         }
         msg = html2eml.from_html('', **params)
-        for param, header in self.params_and_headers.items():
-            self.assertEqual(self._decode_header(msg[header])[0].decode('utf-8').split('; '), params[param])
+        for header in fields_to_test:
+            self.assertEqual(str(msg[header]).split(','), params[header])
 
     def test_header_length(self):
         fields_to_test = ['to', 'cc', 'bcc']
@@ -72,7 +73,7 @@ class TestFromHtml(unittest.TestCase):
         }
         msg = html2eml.from_html('', **params)
         for header in fields_to_test:
-            for part in msg[header].split('\n'):
+            for part in str(msg[header]).split('\n'):
                 self.assertLessEqual(len(part), email.header.MAXLINELEN)
 
 

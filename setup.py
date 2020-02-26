@@ -5,7 +5,7 @@ with open('README.md') as readme_file:
 
 setup_args = dict(
     name='html2eml',
-    version='0.0.2',
+    version='0.0.3',
     description='html2eml is a simple package for converting HTML text to EML format (MIME RFC 822)',
     long_description=README,
     long_description_content_type="text/markdown",

@@ -16,8 +16,8 @@ Create simple message with `to` and `from` headers
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: base64
-To: =?utf-8?q?spam=40example=2Ecom?=
-From: =?utf-8?q?eggs=40example=2Ecom?=
+To: spam@example.com
+From: eggs@example.com
 Subject: =?utf-8?q?Sausage?=
 
 PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
@@ -31,7 +31,7 @@ PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
 MIME-Version: 1.0
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-To: =?iso-8859-1?q?spam=40example=2Ecom?=
+To: spam@example.com
 
 <html><body><p>Hello world</p></body></html>
 ```
@@ -44,10 +44,10 @@ Outside of `To` and `From` fields we can also specify `CC` and `BCC`
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: base64
-To: =?utf-8?q?foo=40example=2Ecom?=
-From: =?utf-8?q?bar=40example=2Ecom?=
-CC: =?utf-8?q?spam=40example=2Ecom?=
-BCC: =?utf-8?q?eggs=40example=2Ecom?=
+To: foo@example.com
+From: bar@example.com
+CC: spam@example.com
+BCC: eggs@example.com
 
 PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
 ```
@@ -60,9 +60,8 @@ In case of multiple recipients we can pass a list in any of those fields
 MIME-Version: 1.0
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: base64
-To: =?utf-8?q?foo=40example=2Ecom=3B_spam=40example=2Ecom=3B_eggs=40example=2Eco?=
- =?utf-8?q?m?=
-From: =?utf-8?q?bar=40example=2Ecom?=
+To: foo@example.com,spam@example.com,eggs@example.com
+From: bar@example.com
 
-PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
+PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4
 ```
