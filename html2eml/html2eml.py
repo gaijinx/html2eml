@@ -1,4 +1,7 @@
 import email
+from email.header import Header
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 def from_html(html_text, charset='utf-8', to=None,
@@ -25,9 +28,20 @@ def _add_recipient_header(msg, recipients, field_name):
     if recipients:
         if not isinstance(recipients, (list, tuple)):
             recipients = [recipients]
-        msg[field_name] = email.header.Header(", ".join(recipients),
-                                              header_name=field_name).encode()
+        msg[field_name] = Header(", ".join(recipients),
+                                 header_name=field_name).encode()
 
 
 def _prepare_header(s, charset):
-    return email.header.Header(s, charset=charset).encode()
+    return Header(s, charset=charset).encode()
+
+
+def convert_eml_to_multipart(eml_message):
+    msg = MIMEMultipart()
+    msg.set_charset(eml_message.get_charset())
+    for field in ('To', 'From', 'CC', 'BCC', 'Subject'):
+        if eml_message.get(field, False):
+            msg[field] = eml_message[field]
+    msg.attach(MIMEText(eml_message.get_payload(decode=True),
+                        'html', eml_message.get_charset()))
+    return msg

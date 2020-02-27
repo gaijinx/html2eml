@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/gaijinx/html2eml.svg?branch=master)](https://travis-ci.com/gaijinx/html2eml)
 [![MIT License badge](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/gaijinx/html2eml/blob/master/LICENSE)
 
-`html2eml` is a simple package for converting HTML text to EML format (MIME RFC 822).
+`html2eml` is a simple package for converting HTML text to EML format (MIME RFC 2822).
 
 # Getting started
 
@@ -64,4 +64,27 @@ To: foo@example.com, spam@example.com, eggs@example.com
 From: bar@example.com
 
 PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4
+```
+
+Library also supports converting plain EML messages to MIME Multipart messages
+```python
+>>> msg = html2eml.from_html('<html><body><p>Hello world</p></body></html>', to=['foo@example.com', 'spam@example.com', 'eggs@example.com'], from_='bar@example.com')
+
+>>> multipart = html2eml.convert_eml_to_multipart(msg)
+
+>>> print(multipart.as_string())
+MIME-Version: 1.0
+Content-Type: multipart/mixed; charset="utf-8"; boundary="===============2813024326530809151=="
+Content-Transfer-Encoding: base64
+To: foo@example.com, spam@example.com, eggs@example.com
+From: bar@example.com
+
+--===============2813024326530809151==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGJvZHk+PHA+SGVsbG8gd29ybGQ8L3A+PC9ib2R5PjwvaHRtbD4=
+
+--===============2813024326530809151==--
 ```
