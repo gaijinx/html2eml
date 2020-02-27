@@ -38,10 +38,11 @@ def _prepare_header(s, charset):
 
 def convert_eml_to_multipart(eml_message):
     msg = MIMEMultipart()
-    msg.set_charset(eml_message.get_charset())
+    charset = str(eml_message.get_charset())
+    msg.set_charset(charset)
     for field in ('To', 'From', 'CC', 'BCC', 'Subject'):
         if eml_message.get(field, False):
             msg[field] = eml_message[field]
     msg.attach(MIMEText(eml_message.get_payload(decode=True),
-                        'html', eml_message.get_charset()))
+                        'html', charset))
     return msg
